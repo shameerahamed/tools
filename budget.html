@@ -1,0 +1,651 @@
+<html>
+<head>
+<title>Budget Calculator</title>
+<link href="./style.css" rel="stylesheet" type="text/css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+</head>
+	<body ng-app="">
+	<div style="width:70%;padding:20px;">
+		<table class="budget-calculator">
+		<thead>
+			<tr class="vals">
+				<td>
+					
+				</td>
+				<td>
+					Target     
+				</td>
+				<td>
+					  Actual      
+				</td>
+				<td>
+					  Difference      
+				</td>
+			</tr>
+			<tr>
+				<th valign="top">
+					Monthly Income<br>
+					<span style="font-weight:normal">Average monthly take home pay(includes bonus,rental income and cash proceeds from investments)</span>
+				</th>
+				<td>
+					<label for="AvgPayTargetTbx">$</label> 
+					<input ng-model="AvgPayTargetTbx" type="number" value="0.00" id="AvgPayTargetTbx"> 
+				</td>
+				<td>
+					<label for="AvgPayActualTbx">$</label> 
+					<input ng-model="AvgPayActualTbx" type="number" value="0.00" id="AvgPayActualTbx">
+				</td>
+				<td valign="middle">
+					<label for="AvgPayDifflBL">$</label>	
+					<span id="AvgPayDifflBL" ng-class="{red:(AvgPayDiff<0), black:(AvgPayDiff>=0)}">{{AvgPayDiff=AvgPayActualTbx-AvgPayTargetTbx}}</span>              
+				</td>
+			</tr>
+		</thead>
+		</table>
+            
+		<table class="budget-calculator">         
+		<thead>
+			<tr>
+				<th colspan="4">Monthly Expenses Using Cash</th>
+				
+			</tr>
+		</thead>
+		<tbody> 
+			<tr id="_sectionRow_0" class="title">
+				<th>
+					<span id="_TitleLbl_0" style="font-weight:bold;">Fixed Expenses</span>
+				</th>
+				<td>
+					<span id="_TargetFor_0">$</span> <span id="_TargetLbl_0">{{fixedExp$TargetTbx=ctl01$TargetTbx+ctl02$TargetTbx+ctl03$TargetTbx+ctl04$TargetTbx+ctl05$TargetTbx+ctl06$TargetTbx+ctl07$TargetTbx+ctl08$TargetTbx+ctl09$TargetTbx}}</span>
+				</td>
+				<td>
+					<span id="_ActualFor_0">$</span> <span id="_ActualLbl_0">{{fixedExp$ActualTbx=(ctl01$ActualTbx+ctl02$ActualTbx+ctl03$ActualTbx+ctl04$ActualTbx+ctl05$ActualTbx+ctl06$ActualTbx+ctl07$ActualTbx+ctl08$ActualTbx+ctl09$ActualTbx)}}</span>
+				</td>
+				<td valign="top">
+					<span id="_TargetFor_0">$</span> 
+					<span id="_DiffLbl_0" ng-class="{red:(fixedDiff<0), black:(fixedDiff>=0)}">{{fixedDiff=fixedExp$TargetTbx-fixedExp$ActualTbx}}</span>
+				</td>
+			</tr>	
+                    
+			<tr id="_sectionRow_1">
+				<th>
+					<span id="_TitleLbl_1">Savings</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_1" id="_TargetFor_1">$</label> 
+					
+					<input ng-model="ctl01$TargetTbx" type="number" value="0.00" id="_TargetTbx_1">
+				</td>
+				<td>
+					<label for="_ActualTbx_1" id="_ActualFor_1">$</label> 
+					
+					<input ng-model="ctl01$ActualTbx" type="number" value="0.00" id="_ActualTbx_1">
+				</td>
+				<td valign="top">
+					<span id="_TargetFor_0">$</span>
+					<span id="_DiffLbl_1" ng-class="{red:(ct101Diff<0), black:(ct101Diff>=0)}">{{ct101Diff=ctl01$TargetTbx-ctl01$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+            <tr id="_sectionRow_2">
+				<th>
+					<span id="_TitleLbl_2">Mortgage Repayment (cash)/Rental Payment</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_2" id="_TargetFor_2">$</label> 
+					
+					<input ng-model="ctl02$TargetTbx" type="number" value="700.00" id="_TargetTbx_2">
+				</td>
+				<td>
+					<label for="_ActualTbx_2" id="_ActualFor_2">$</label> 
+					
+					<input ng-model="ctl02$ActualTbx" type="number" value="0.00" id="_ActualTbx_2">
+				</td>
+				<td valign="top">
+					<span id="_TargetFor_0">$</span>
+					<span id="_DiffLbl_2" ng-class="{red:(ct102Diff<0), black:(ct102Diff>=0)}">{{ct102Diff=ctl02$TargetTbx-ctl02$ActualTbx}}</span>
+				</td>
+			</tr>	
+                    
+			<tr id="_sectionRow_3">
+				<th>
+					<span id="_TitleLbl_3">Conservancy and Property Taxes</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_3" id="_TargetFor_3">$</label> 					
+					<input ng-model="ctl03$TargetTbx" type="number" value="0.00" id="_TargetTbx_3">
+				</td>
+				<td>
+					<label for="_ActualTbx_3" id="_ActualFor_3">$</label> 					
+					<input ng-model="ctl03$ActualTbx" type="number" value="0.00" id="_ActualTbx_3">
+				</td>
+				<td valign="top">
+					<span id="_TargetFor_0">$</span> 
+					<span id="_DiffLbl_3" ng-class="{red:(ct103Diff<0), black:(ct103Diff>=0)}">{{ct103Diff=ctl03$TargetTbx-ctl03$ActualTbx}}</span>
+				</td>
+			</tr>	
+                    
+			<tr id="_sectionRow_4">
+				<th>
+					<span id="_TitleLbl_4">Insurance</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_4" id="_TargetFor_4">$</label>					
+					<input ng-model="ctl04$TargetTbx" type="number" value="0.00" id="_TargetTbx_4">
+				</td>
+				<td>
+					<label for="_ActualTbx_4" id="_ActualFor_4">$</label> 					
+					<input ng-model="ctl04$ActualTbx" type="number" value="0.00" id="_ActualTbx_4">
+				</td>
+				<td valign="top">
+					<span id="_TargetFor_0">$</span>
+					<span id="_DiffLbl_4" ng-class="{red:(ct104Diff<0), black:(ct104Diff>=0)}">{{ct104Diff=ctl04$TargetTbx-ctl04$ActualTbx}}</span>
+				</td>
+			</tr>	
+                    
+			<tr id="_sectionRow_5">
+				<th>
+					<span id="_TitleLbl_5">Income tax</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_5" id="_TargetFor_5">$</label> 					
+					<input ng-model="ctl05$TargetTbx" type="number" value="140.00" id="_TargetTbx_5">
+				</td>
+				<td>
+					<label for="_ActualTbx_5" id="_ActualFor_5">$</label>					
+					<input ng-model="ctl05$ActualTbx" type="number" value="0.00" id="_ActualTbx_5">
+				</td>
+				<td valign="top">
+					<span id="_TargetFor_0">$</span>
+					<span id="_DiffLbl_5" ng-class="{red:(ct105Diff<0), black:(ct105Diff>=0)}">{{ct105Diff=ctl05$TargetTbx-ctl05$ActualTbx}}</span>
+				</td>
+			</tr>	
+                    
+			<tr id="_sectionRow_6">
+				<th>
+					<span id="_TitleLbl_6">Children's Education</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_6" id="_TargetFor_6">$</label>					
+					<input ng-model="ctl06$TargetTbx" type="number" value="0.00" id="_TargetTbx_6">
+				</td>
+				<td>
+					<label for="_ActualTbx_6" id="_ActualFor_6">$</label> 					
+					<input ng-model="ctl06$ActualTbx" type="number" value="0.00" id="_ActualTbx_6">
+				</td>
+				<td valign="top">
+					<span id="_TargetFor_0">$</span>
+					<span id="_DiffLbl_6" ng-class="{red:(ct106Diff<0), black:(ct106Diff>=0)}">{{ct106Diff=ctl06$TargetTbx-ctl06$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+            <tr id="_sectionRow_7">
+				<th>
+					<span id="_TitleLbl_7">Allowances for Parents and Children</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_7" id="_TargetFor_7">$</label> 
+					
+					<input ng-model="ctl07$TargetTbx" type="number" value="300.00" id="_TargetTbx_7">
+				</td>
+				<td>
+					<label for="_ActualTbx_7" id="_ActualFor_7">$</label> 
+					
+					<input ng-model="ctl07$ActualTbx" type="number" value="0.00" id="_ActualTbx_7">
+				</td>
+				<td valign="top">
+					<span id="_TargetFor_0">$</span>
+					<span id="_DiffLbl_7" ng-class="{red:(ct107Diff<0), black:(ct107Diff>=0)}">{{ct107Diff=ctl07$TargetTbx-ctl07$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+            <tr id="_sectionRow_8">
+				<th>
+					<span id="_TitleLbl_8">Maid</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_8" id="_TargetFor_8">$</label> 
+					
+					<input ng-model="ctl08$TargetTbx" type="number" value="0.00" id="_TargetTbx_8">
+				</td>
+				<td>
+					<label for="_ActualTbx_8" id="_ActualFor_8">$</label> 
+					
+					<input ng-model="ctl08$ActualTbx" type="number" value="0.00" id="_ActualTbx_8">
+				</td>
+				<td valign="top">
+					<span id="_TargetFor_0">$</span>
+					<span id="_DiffLbl_8" ng-class="{red:(ct108Diff<0), black:(ct108Diff>=0)}">{{ct108Diff=ctl08$TargetTbx-ctl08$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+            <tr id="_sectionRow_9">
+				<th>
+					<span id="_TitleLbl_9">Personal Loan Repayment</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_9" id="_TargetFor_9">$</label> 
+					
+					<input ng-model="ctl09$TargetTbx" type="number" value="500.00" id="_TargetTbx_9">
+				</td>
+				<td>
+					<label for="_ActualTbx_9" id="_ActualFor_9">$</label> 
+					
+					<input ng-model="ctl09$ActualTbx" type="number" value="0.00" id="_ActualTbx_9">
+				</td>
+				<td valign="top">
+					<span id="_TargetFor_0">$</span>
+					<span id="_DiffLbl_9" ng-class="{red:(ct109Diff<0), black:(ct109Diff>=0)}">{{ct109Diff=ctl09$TargetTbx-ctl09$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+            <tr id="_sectionRow_10" class="title">
+				<th>
+					<span id="_TitleLbl_10" style="font-weight:bold;">Food and neccessities</span>
+				</th>
+				<td>
+					<span id="_TargetFor_10">$</span> <span id="_TargetLbl_10">{{foodExp$TargetTbx=(ctl11$TargetTbx+ctl12$TargetTbx+ctl13$TargetTbx+ctl14$TargetTbx)}}</span>
+				</td>
+				<td>
+					<span id="_ActualFor_10">$</span> <span id="_ActualLbl_10">
+					{{foodExp$ActualTbx=(ctl11$ActualTbx+ctl12$ActualTbx+ctl13$ActualTbx+ctl14$ActualTbx)}}</span>
+				</td>
+				<td valign="top">
+					<span id="_TargetFor_0">$</span>
+					<span id="_DiffLbl_10" ng-class="{red:(foodExpDiff<0), black:(foodExpDiff>=0)}">{{foodExpDiff=foodExp$TargetTbx-foodExp$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+            <tr id="_sectionRow_11">
+				<th>
+					<span id="_TitleLbl_11">Groceries</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_11" id="_TargetFor_11">$</label> 
+					<input ng-model="ctl11$TargetTbx" type="number" value="0.00" id="_TargetTbx_11">
+				</td>
+				<td>
+					<label for="_ActualTbx_11" id="_ActualFor_11">$</label> 					
+					<input ng-model="ctl11$ActualTbx" type="number" value="0.00" id="_ActualTbx_11">
+				</td>
+				<td valign="top">
+					<span id="_TargetFor_0">$</span>
+					<span id="_DiffLbl_11" ng-class="{red:(ctl11Diff<0), black:(ctl11Diff>=0)}">{{ctl11Diff=ctl11$TargetTbx-ctl11$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+            <tr id="_sectionRow_12">
+				<th>
+					<span id="_TitleLbl_12">Eating out</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_12" id="_TargetFor_12">$</label> 					
+					<input ng-model="ctl12$TargetTbx" type="number" value="0.00" id="_TargetTbx_12">					
+				</td>
+				<td>
+					<label for="_ActualTbx_12" id="_ActualFor_12">$</label> 					
+					<input ng-model="ctl12$ActualTbx" type="number" value="0.00" id="_ActualTbx_12">					
+				</td>
+				<td valign="top">
+					<span id="_TargetFor_0">$</span>
+					<span id="_DiffLbl_12" ng-class="{red:(ctl12Diff<0), black:(ctl12Diff>=0)}">{{ctl12Diff=ctl12$TargetTbx-ctl12$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+            <tr id="_sectionRow_13">
+				<th>
+					<span id="_TitleLbl_13">Clothing and personal maintenance</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_13" id="_TargetFor_13">$</label>					
+					<input ng-model="ctl13$TargetTbx" type="number" value="0.00" id="_TargetTbx_13">					
+				</td>
+				<td>
+					<label for="_ActualTbx_13" id="_ActualFor_13">$</label> 					
+					<input ng-model="ctl13$ActualTbx" type="number" value="0.00" id="_ActualTbx_13">					
+				</td>
+				<td valign="top">
+					<span id="_TargetFor_0">$</span>
+					<span id="_DiffLbl_13" ng-class="{red:(ctl13Diff<0), black:(ctl13Diff>=0)}">{{ctl13Diff=ctl13$TargetTbx-ctl13$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+            <tr id="_sectionRow_14">
+				<th>
+					<span id="_TitleLbl_14">Health and medical</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_14" id="_TargetFor_14">$</label> 					
+					<input ng-model="ctl14$TargetTbx" type="number" value="0.00" id="_TargetTbx_14">				
+				</td>
+				<td>
+					<label for="_ActualTbx_14" id="_ActualFor_14">$</label> 					
+					<input ng-model="ctl14$ActualTbx" type="number" value="0.00" id="_ActualTbx_14">				
+				</td>
+				<td valign="top">
+					<span id="_TargetFor_0">$</span>
+					<span id="_DiffLbl_14" ng-class="{red:(ctl14Diff<0), black:(ctl14Diff>=0)}">{{ctl14Diff=ctl14$TargetTbx-ctl14$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+                    
+			<tr id="_sectionRow_15" class="title">
+				<th>
+					<span id="_TitleLbl_15" style="font-weight:bold;">Miscellanous</span>
+				</th>
+				<td>
+					<span id="_TargetFor_15">$</span><span id="_ActualLbl_15">{{miscExp$TargetTbx=(ctl16$TargetTbx+ctl17$TargetTbx+ctl18$TargetTbx+ctl19$TargetTbx)}}</span>
+				</td>
+				<td>
+					<span id="_ActualFor_15">$</span> <span id="_ActualLbl_15">{{miscExp$ActualTbx=(ctl16$ActualTbx+ctl17$ActualTbx+ctl18$ActualTbx+ctl19$ActualTbx)}}</span>
+				</td>
+				<td valign="top">
+					<label for="_DiffFor_15" id="_DiffFor_15">$</label>
+					<span id="_DiffLbl_15" ng-class="{red:(miscExpDiff<0), black:(miscExpDiff>=0)}">{{miscExpDiff=miscExp$TargetTbx-miscExp$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+                    
+			<tr id="_sectionRow_16">
+				<th>
+					<span id="_TitleLbl_16">Tour and family outings</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_16" id="_TargetFor_16">$</label>
+					<input ng-model="ctl16$TargetTbx" type="number" value="0.00" id="_TargetTbx_16">
+				</td>
+				<td>
+					<label for="_ActualTbx_16" id="_ActualFor_16">$</label> 					
+					<input ng-model="ctl16$ActualTbx" type="number" value="0.00" id="_ActualTbx_16">
+				</td>
+				<td valign="top">
+					<label for="_DiffFor_16" id="_DiffFor_16">$</label>
+					<span id="_DiffLbl_16" ng-class="{red:(ctl16Diff<0), black:(ctl16Diff>=0)}">{{ctl16Diff=ctl16$TargetTbx-ctl16$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+                    
+			<tr id="_sectionRow_17">
+				<th>
+					<span id="_TitleLbl_17">Entertainment</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_17" id="_TargetFor_17">$</label>					
+					<input ng-model="ctl17$TargetTbx" type="number" value="0.00" id="_TargetTbx_17">
+				</td>
+				<td>
+					<label for="_ActualTbx_17" id="_ActualFor_17">$</label> 					
+					<input ng-model="ctl17$ActualTbx" type="number" value="0.00" id="_ActualTbx_17">
+				</td>
+				<td valign="top">
+					<label for="_DiffFor_17" id="_DiffFor_17">$</label>
+					<span id="_DiffLbl_17" ng-class="{red:(ctl17Diff<0), black:(ctl17Diff>=0)}">{{ctl17Diff=ctl17$TargetTbx-ctl17$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+                    
+			<tr id="_sectionRow_18">
+				<th>
+					<span id="_TitleLbl_18">Hobbies and sports</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_18" id="_TargetFor_18">$</label> 					
+					<input ng-model="ctl18$TargetTbx" type="number" value="0.00" id="_TargetTbx_18">
+				</td>
+				<td>
+					<label for="_ActualTbx_18" id="_ActualFor_18">$</label>
+					<input ng-model="ctl18$ActualTbx" type="number" value="0.00" id="_ActualTbx_18">
+				</td>
+				<td valign="top">
+					<label for="_DiffFor_18" id="_DiffFor_18">$</label>
+					<span id="_DiffLbl_18" ng-class="{red:(ctl18Diff<0), black:(ctl18Diff>=0)}">{{ctl18Diff=ctl18$TargetTbx-ctl18$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+                    
+			<tr id="_sectionRow_19">
+				<th>
+					<span id="_TitleLbl_19">Others</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_19" id="_TargetFor_19">$</label>					
+					<input ng-model="ctl19$TargetTbx" type="number" value="0.00" id="_TargetTbx_19">
+				</td>
+				<td>
+					<label for="_ActualTbx_19" id="_ActualFor_19">$</label>					
+					<input ng-model="ctl19$ActualTbx" type="number" value="0.00" id="_ActualTbx_19">
+				</td>
+				<td valign="top">
+					<label for="_DiffFor_19" id="_DiffFor_19">$</label>
+					<span id="_DiffLbl_19" ng-class="{red:(ctl19Diff<0), black:(ctl19Diff>=0)}">{{ctl19Diff=ctl19$TargetTbx-ctl19$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+                    
+			<tr id="_sectionRow_20" class="title">
+				<th>
+					<span id="_TitleLbl_20" style="font-weight:bold;">Transport</span>
+				</th>
+				<td>
+					<span id="_TargetFor_20">$</span> <span id="_TargetLbl_20">{{transExp$TargetTbx=(ctl21$TargetTbx+ctl22$TargetTbx+ctl23$TargetTbx+ctl24$TargetTbx+ctl25$TargetTbx)}}</span>
+				</td>
+				<td>
+					<span id="_ActualFor_20">$</span> <span id="_ActualLbl_20">{{transExp$ActualTbx=(ctl21$ActualTbx+ctl22$ActualTbx+ctl23$ActualTbx+ctl24$ActualTbx+ctl25$ActualTbx)}}</span>
+				</td>
+				<td valign="top">
+					<span id="_DiffFor_20">$</span>
+					<span id="_DiffLbl_20" ng-class="{red:(transExpDiff<0), black:(transExpDiff>=0)}">{{transExpDiff=transExp$TargetTbx-transExp$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+                    
+			<tr id="_sectionRow_21">
+				<th>
+					<span id="_TitleLbl_21">Car Loan Repayments</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_21" id="_TargetFor_21">$</label> 				
+					<input ng-model="ctl21$TargetTbx" type="number" value="0.00" id="_TargetTbx_21">
+				</td>
+				<td>
+					<label for="_ActualTbx_21" id="_ActualFor_21">$</label> 					
+					<input ng-model="ctl21$ActualTbx" type="number" value="0.00" id="_ActualTbx_21">
+				</td>
+				<td valign="top">
+					<span id="_DiffFor_21">$</span>
+					<span id="_DiffLbl_21" ng-class="{red:(ctl21Diff<0), black:(ctl21Diff>=0)}">{{ctl21Diff=ctl21$TargetTbx-ctl21$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+                    
+			<tr id="_sectionRow_22">
+				<th>
+					<span id="_TitleLbl_22">Motor Insurance and Road Tax</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_22" id="_TargetFor_22">$</label> 					
+					<input ng-model="ctl22$TargetTbx" type="number" value="0.00" id="_TargetTbx_22">
+				</td>
+				<td>
+					<label for="_ActualTbx_22" id="_ActualFor_22">$</label> 					
+					<input ng-model="ctl22$ActualTbx" type="number" value="0.00" id="_ActualTbx_22">
+				</td>
+				<td valign="top">
+					<span id="_DiffFor_22">$</span>
+					<span id="_DiffLbl_22" ng-class="{red:(ct122Diff<0), black:(ct122Diff>=0)}">{{ct122Diff=ctl22$TargetTbx-ctl22$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+            <tr id="_sectionRow_23">
+				<th>
+					<span id="_TitleLbl_23">Car Park Fees</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_23" id="_TargetFor_23">$</label> 					
+					<input ng-model="ctl23$TargetTbx" type="number" value="0.00" id="_TargetTbx_23">
+				</td>
+				<td>
+					<label for="_ActualTbx_23" id="_ActualFor_23">$</label> 					
+					<input ng-model="ctl23$ActualTbx" type="number" value="0.00" id="_ActualTbx_23">
+				</td>
+				<td valign="top">
+					<span id="_DiffFor_23">$</span>
+					<span id="_DiffLbl_23" ng-class="{red:(ct123Diff<0), black:(ct123Diff>=0)}">{{ct123Diff=ctl23$TargetTbx-ctl23$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+                    
+			<tr id="_sectionRow_24">
+				<th>
+					<span id="_TitleLbl_24">Petrol and Maintenance Expenses</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_24" id="_TargetFor_24">$</label> 					
+					<input ng-model="ctl24$TargetTbx" type="number" value="0.00" id="_TargetTbx_24">
+				</td>
+				<td>
+					<label for="_ActualTbx_24" id="_ActualFor_24">$</label> 					
+					<input ng-model="ctl24$ActualTbx" type="number" value="0.00" id="_ActualTbx_24">
+				</td>
+				<td valign="top">
+					<span id="_DiffFor_24">$</span>
+					<span id="_DiffLbl_24" ng-class="{red:(ct124Diff<0), black:(ct124Diff>=0)}">{{ct124Diff=ctl24$TargetTbx-ctl24$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+                    
+			<tr id="_sectionRow_25">
+				<th>
+					<span id="_TitleLbl_25">Public Transport</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_25" id="_TargetFor_25">$</label> 					
+					<input ng-model="ctl25$TargetTbx" type="number" value="100.00" id="_TargetTbx_25">
+				</td>
+				<td>
+					<label for="_ActualTbx_25" id="_ActualFor_25">$</label>					
+					<input ng-model="ctl25$ActualTbx" type="number" value="0.00" id="_ActualTbx_25">
+				</td>
+				<td valign="top">
+					<span id="_DiffFor_25">$</span>
+					<span id="_DiffLbl_25" ng-class="{red:(ct125Diff<0), black:(ct125Diff>=0)}">{{ct125Diff=ctl25$TargetTbx-ctl25$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+                    
+			<tr id="_sectionRow_26" class="title">
+				<th>
+					<span id="_TitleLbl_26" style="font-weight:bold;">Utilities and household maintenance</span>
+				</th>
+				<td>
+					<span id="_TargetFor_26">$</span> <span id="_TargetLbl_26">{{utilExp$TargetTbx=(ctl27$TargetTbx+ctl28$TargetTbx+ctl29$TargetTbx+ctl30$TargetTbx)}}</span>
+				</td>
+				<td>
+					<span id="_ActualFor_26">$</span> <span id="_ActualLbl_26">{{utilExp$ActualTbx=(ctl27$ActualTbx+ctl28$ActualTbx+ctl29$ActualTbx+ctl30$ActualTbx)}}</span>
+				</td>
+				<td valign="top">
+					<span id="_DiffFor_26">$</span>
+					<span id="_DiffLbl_26" ng-class="{red:(utilExpDiff<0), black:(utilExpDiff>=0)}">{{utilExpDiff=utilExp$TargetTbx-utilExp$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+                    
+			<tr id="_sectionRow_27">
+				<th>
+					<span id="_TitleLbl_27">Utilities Bills</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_27" id="_TargetFor_27">$</label> 					
+					<input ng-model="ctl27$TargetTbx" type="number" value="100.00" id="_TargetTbx_27">
+				</td>
+				<td>
+					<label for="_ActualTbx_27" id="_ActualFor_27">$</label> 					
+					<input ng-model="ctl27$ActualTbx" type="number" value="0.00" id="_ActualTbx_27">
+				</td>
+				<td valign="top">
+					<span id="_DiffFor_27">$</span>
+					<span id="_DiffLbl_27" ng-class="{red:(ct127Diff<0), black:(ct127Diff>=0)}">{{ct127Diff=ctl27$TargetTbx-ctl27$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+                    
+			<tr id="_sectionRow_28">
+				<th>
+					<span id="_TitleLbl_28">Home Telephone</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_28" id="_TargetFor_28">$</label> 					
+					<input ng-model="ctl28$TargetTbx" type="number" value="26.00" id="_TargetTbx_28">
+					</td>
+				<td>
+					<label for="_ActualTbx_28" id="_ActualFor_28">$</label> 					
+					<input ng-model="ctl28$ActualTbx" type="number" value="0.00" id="_ActualTbx_28">
+					</td>
+				<td valign="top">
+					<span id="_DiffFor_28">$</span>
+					<span id="_DiffLbl_28" ng-class="{red:(ctl28Diff<0), black:(ctl28Diff>=0)}">{{ctl28Diff=ctl28$TargetTbx-ctl28$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+                    
+			<tr id="_sectionRow_29">
+				<th>
+					<span id="_TitleLbl_29">Mobile Phone</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_29" id="_TargetFor_29">$</label> 					
+					<input ng-model="ctl29$TargetTbx" type="number" value="0.00" id="_TargetTbx_29">
+					</td>
+				<td>
+					<label for="_ActualTbx_29" id="_ActualFor_29">$</label> 					
+					<input ng-model="ctl29$ActualTbx" type="number" value="0.00" id="_ActualTbx_29">
+					</td>
+				<td valign="top">
+					<span id="_DiffFor_29">$</span>
+					<span id="_DiffLbl_29" ng-class="{red:(ct129Diff<0), black:(ct129Diff>=0)}">{{ct129Diff=ctl29$TargetTbx-ctl29$ActualTbx}}</span>
+				</td>
+			</tr>
+	
+            <tr id="_sectionRow_30">
+				<th>
+					<span id="_TitleLbl_30">Cable TV and Internet</span>
+				</th>
+				<td>
+					<label for="_TargetTbx_30" id="_TargetFor_30">$</label>					
+					<input ng-model="ctl30$TargetTbx" type="number" value="0.00" id="_TargetTbx_30">
+				</td>
+				<td>
+					<label for="_ActualTbx_30" id="_ActualFor_30">$</label>					
+					<input ng-model="ctl30$ActualTbx" type="number" value="0.00" id="_ActualTbx_30">
+				</td>
+				<td valign="top">
+					<span id="_DiffFor_30">$</span>
+					<span id="_DiffLbl_30" ng-class="{red:(ct130Diff<0), black:(ct130Diff>=0)}">{{ct130Diff=ctl30$TargetTbx-ctl30$ActualTbx}}</span>
+				</td>
+			</tr>
+                                         
+        </tbody>                
+        </table>                
+		<table class="budget-calculator">
+		<thead>
+			<tr>
+				<th>Total Expenses</th>
+				<td><span id="totalExpTargetLbl">${{totalExp$Target=(fixedExp$TargetTbx+foodExp$TargetTbx+miscExp$TargetTbx+transExp$TargetTbx+utilExp$TargetTbx)}}</span></td>
+				<td><span id="totalExpActualLbl">${{totalExp$Actual=(fixedExp$ActualTbx+foodExp$ActualTbx+miscExp$ActualTbx+transExp$ActualTbx+utilExp$ActualTbx)}}</span></td>
+				<td><span id="totalExpDiffLbl" ng-class="{red:(totalExpDiff<0), black:(totalExpDiff>=0)}">${{totalExpDiff=totalExp$Target-totalExp$Actual}}</span></td>
+			</tr>
+		</thead>
+		</table>
+		<table class="budget-calculator">
+		<thead>
+		<tr>
+			<th>Net Cash Flow</th>
+			<td><span id="NetTargetLbl" ng-class="{red:(targetDiff<0), black:(targetDiff>=0)}">${{targetDiff=AvgPayTargetTbx-totalExp$Target}}</span></td>
+			<td><span id="NetActualLbl" ng-class="{red:(ActualDiff<0), black:(ActualDiff>=0)}">${{ActualDiff=AvgPayActualTbx-totalExp$Actual}}</span></td>
+			<td><span id="NetDiffLbl" ng-class="{red:(NetCashDiff<0), black:(NetCashDiff>=0)}">${{NetCashDiff=AvgPayDiff-totalExpDiff}}</span></td>
+		</tr>
+		</thead>
+		</table>
+	</div>
+	</body>
+</html>
