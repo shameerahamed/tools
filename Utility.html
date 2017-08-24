@@ -1,0 +1,178 @@
+<html>
+<head>
+<title>Budget Calculator</title>
+<link href="./style.css" rel="stylesheet" type="text/css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+</head>
+	<body ng-app="">
+  	<div style="width:70%;padding:20px;">
+		<table class="budget-calculator">
+		<thead>
+    <tr class="vals">
+      <td>Utility</td>
+      <td>Start Reading</td>
+      <td>End Reading></td>
+      <td>Usage</td>
+      <td>Cost/unit</td>
+      <td>Total</td>
+    </tr>
+    </thead>
+    </table>
+    
+    <table class="budget-calculator">
+    <thead>
+      <tr class="title">
+        <th colspan="4">Electricity Services</th>
+        <th>Total</th>
+        <td valign="middle">
+        <label for="totalEb">$</label>
+        <span id="totalEb" ng-class="{red:(totalEb>30), black:(totalEb<=30)}">{{totalEb=(totalEb1+totalEb2)}}</span>
+       </td>
+    </tr>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+       <th align="top">
+         EB Split1
+       </th>
+       <td>
+         <label for="startReadEb1">R </label>
+         <input ng-model="startReadEb1" type="number" value="43146" id="startReadEb1">
+       </td>
+       <td>
+         <label for="endReadEb1">R </label>
+         <input ng-model="endReadEb1" type="number" value="43180" id="endReadEb1">
+       </td>
+       <td>
+          <span id="usageEb1">{{usageEb1=(endReadEb1-startEb1)}}</span>
+          <label for="usageEb1"> Kwh</label>
+       </td>
+       <td>
+         <label for="costPerEb1">$</label>
+         <input ng-model="costPerEb1" type="number" value="0.2072" id="costPerEb1">
+       </td>
+       <td valign="middle">
+         <label for="totalEb1">$</label>
+         <span id="totalEb1" ng-class="{red:(totalEb1>30), black:(totalEb1<=30)}">{{totalEb1=usageEb1*costPerEb1}}</span>
+       </td>
+    </tr>
+    <tr>
+       <th align="top">
+         EB Split2
+       </th>
+       <td>
+         <label for="startReadEb2">R</label>
+         <input ng-model="startReadEb2" type="number" value="0" id="startReadEb2">
+       </td>
+       <td>
+         <label for="endReadEb2">R</label>
+         <input ng-model="endReadEb2" type="number" value="0" id="endReadEb2">
+       </td>
+       <td>
+          <span id="usageEb2">{{usageEb2=(endReadEb2-startEb2)}}</span>
+          <label for="usageEb2"> Kwh</label>
+       </td>
+       <td>
+         <label for="costPerEb2">$</label>
+         <input ng-model="costPerEb2" type="number" value="0" id="costPerEb2">
+       </td>
+       <td valign="middle">
+         <label for="totalEb2">$</label>
+         <span id="totalEb2" ng-class="{red:(totalEb2>30), black:(totalEb2<=30)}">{{totalEb2=usageEb2*costPerEb2}}</span>
+       </td>
+    </tr>
+    </tbody>
+   </table>
+   
+    <table class="budget-calculator">
+    <thead>
+      <tr class="title">
+       <th colspan="4">Water</th>
+       <th>Total</th>
+       <td valign="middle">
+        <label for="totalWt">$</label>
+        <span id="totalWt" ng-class="{red:(totalWt>30), black:(totalWt<=30)}">{{totalWt=(totalWt1+totalWt2)}}</span>
+       </td>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+       <th align="top">
+         Water Split1
+       </th>
+       <td>
+         <label for="startReadWt1">R</label>
+         <input ng-model="startReadWt1" type="number" value="1952" id="startReadWt1">
+       </td>
+       <td>
+         <label for="endReadWt1">R</label>
+         <input ng-model="endReadWt1" type="number" value="1972" id="endReadWt1">
+       </td>
+       <td>
+          <span id="usageWt1">{{usageWt1=(endReadWt1-startWt1)}}</span>
+          <label for="usageWt1"> Cu M</label>
+       </td>
+       <td>
+         <label for="costPerWt1">$</label>
+         <input ng-model="costPerWt1" type="number" value="1.19" id="costPerWt1">
+       </td>
+       <td valign="middle">
+         <label for="totalWt1">$</label>
+         <span id="totalWt1" ng-class="{red:(totalWt1>30), black:(totalWt1<=30)}">{{totalWt1=usageWt1*costPerWt1}}</span>
+       </td>
+    </tr>
+    <tr>
+       <th align="top">
+         Water Split2
+       </th>
+       <td>
+         <label for="startReadWt2">R</label>
+         <input ng-model="startReadWt2" type="number" value="0" id="startReadWt2">
+       </td>
+       <td>
+         <label for="endReadWt2">R</label>
+         <input ng-model="endReadWt2" type="number" value="0" id="endReadWt2">
+       </td>
+       <td>
+          <span id="usageWt2">{{usageWt2=(endReadWt2-startWt2)}}</span>
+          <label for="usageWt2">Kwh </label>
+       </td>
+       <td>
+         <label for="costPerWt2">$</label>
+         <input ng-model="costPerWt2" type="number" value="0" id="costPerWt2">
+       </td>
+       <td valign="middle">
+         <label for="totalWt2">$</label>
+         <span id="totalWt2" ng-class="{red:(totalWt2>30), black:(totalWt2<=30)}">{{totalWt2=usageWt2*costPerWt2}}</span>
+       </td>
+    </tr>
+    <tr>
+     <th colspan="3">Waterborne Fee</th>
+     <td><span>{{totalUsageWt=usageWt1+usageWt2}}</span></td>
+     <td>
+        <label for="costWt">$</label>
+        <input ng-model="costWt" type="number" value="0.7800" id="costWt">
+     </td>
+     <td>
+        <label for="totalWtFee">$</label>
+        <span id="totalWtFee">{{totalWtFee=totalUageWt*costWt}}</span>
+     </td>
+    </tr>
+    
+    <tr>
+     <th colspan="3">Water conserve Tax</th>
+     <td><span>{{totalWtAmt=totalWt1+totalWt2}}</span></td>
+     <td>
+        <label for="costWtTax"> % </label>
+        <input ng-model="costWtTax" type="number" value="35" id="costWtTax">
+     </td>
+     <td>
+        <label for="totalWtTax">$</label>
+        <span id="totalWtTax">{{totalWtTax=totalWtAmt*costWtTax/100}}</span>
+     </td>
+    </tr>
+    </tbody>
+   </table>
+  </body>
+</html>
