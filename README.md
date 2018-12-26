@@ -2,5 +2,5 @@
 Productive tools
 
 1. Convert Image to PDF, Merge PDF etc.
-2. Budget Tracker online => https://cdn.rawgit.com/shameerahamed/tools/84842c5e/budget.html
-3. SG Utility Calculator => https://cdn.rawgit.com/shameerahamed/tools/dce26137/Utility.html
+2. Budget Tracker online => https://shameerahamed.github.io/tools/budget.html
+3. SG Utility Calculator => https://shameerahamed.github.io/tools/Utility.html
